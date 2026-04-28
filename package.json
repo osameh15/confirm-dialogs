@@ -1,6 +1,6 @@
 {
   "name": "nuxt-confirm-dialog",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "A beautiful, framework-agnostic confirm dialog module for Nuxt 3 and Nuxt 4 — no Vuetify required.",
   "repository": {
     "type": "git",
