@@ -1,0 +1,50 @@
+/*
+ * Bundled Persian "Shabnam" font for nuxt-confirm-dialog.
+ * unicode-range limits download to documents that actually contain
+ * Arabic / Persian script — no overhead for English-only apps.
+ */
+
+@font-face {
+  font-family: 'Shabnam';
+  src: url('../fonts/Shabnam/Shabnam-Thin.woff2') format('woff2');
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0600-06FF, U+0750-077F, U+08A0-08FF, U+FB50-FDFF, U+FE70-FEFF, U+200C-200D, U+202A-202E;
+}
+
+@font-face {
+  font-family: 'Shabnam';
+  src: url('../fonts/Shabnam/Shabnam-Light.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0600-06FF, U+0750-077F, U+08A0-08FF, U+FB50-FDFF, U+FE70-FEFF, U+200C-200D, U+202A-202E;
+}
+
+@font-face {
+  font-family: 'Shabnam';
+  src: url('../fonts/Shabnam/Shabnam.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0600-06FF, U+0750-077F, U+08A0-08FF, U+FB50-FDFF, U+FE70-FEFF, U+200C-200D, U+202A-202E;
+}
+
+@font-face {
+  font-family: 'Shabnam';
+  src: url('../fonts/Shabnam/Shabnam-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0600-06FF, U+0750-077F, U+08A0-08FF, U+FB50-FDFF, U+FE70-FEFF, U+200C-200D, U+202A-202E;
+}
+
+@font-face {
+  font-family: 'Shabnam';
+  src: url('../fonts/Shabnam/Shabnam-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0600-06FF, U+0750-077F, U+08A0-08FF, U+FB50-FDFF, U+FE70-FEFF, U+200C-200D, U+202A-202E;
+}

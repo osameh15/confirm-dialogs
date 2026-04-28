@@ -1,0 +1,68 @@
+{
+  "name": "nuxt-confirm-dialog",
+  "version": "0.1.0",
+  "description": "A beautiful, framework-agnostic confirm dialog module for Nuxt 3 and Nuxt 4 — no Vuetify required.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/osameh15/confirm-dialogs.git"
+  },
+  "bugs": {
+    "url": "https://github.com/osameh15/confirm-dialogs/issues"
+  },
+  "homepage": "https://github.com/osameh15/confirm-dialogs#readme",
+  "keywords": [
+    "nuxt",
+    "nuxt-module",
+    "vue",
+    "confirm",
+    "dialog",
+    "modal",
+    "alert"
+  ],
+  "license": "MIT",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/types.d.mts",
+      "import": "./dist/module.mjs"
+    }
+  },
+  "main": "./dist/module.mjs",
+  "types": "./dist/types.d.mts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "prepack": "nuxt-module-build build",
+    "prepublishOnly": "npm run lint && npm run test",
+    "dev": "nuxt dev playground",
+    "dev:build": "nuxt build playground",
+    "dev:prepare": "nuxt-module-build build --stub && nuxt-module-build prepare && nuxt prepare playground",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "release": "npm run lint && npm run test && npm run prepack && npm publish"
+  },
+  "dependencies": {
+    "@nuxt/kit": "^3.13.0 || ^4.0.0"
+  },
+  "overrides": {
+    "commander": "^13.0.0"
+  },
+  "devDependencies": {
+    "@nuxt/eslint-config": "^1.15.2",
+    "@nuxt/module-builder": "^1.0.2",
+    "@nuxt/schema": "^4.4.2",
+    "@types/node": "^22.0.0",
+    "@vitejs/plugin-vue": "^5.1.4",
+    "@vue/test-utils": "^2.4.6",
+    "eslint": "^9.10.0",
+    "happy-dom": "^15.7.4",
+    "nuxt": "^4.4.2",
+    "typescript": "^5.5.0",
+    "vitest": "^2.1.1",
+    "vue-tsc": "^2.0.0"
+  }
+}

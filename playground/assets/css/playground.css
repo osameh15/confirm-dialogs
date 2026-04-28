@@ -1,0 +1,228 @@
+/* ---------- reset / base ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  background: #191d23;
+}
+
+body {
+  color: white;
+  font-family:
+    'Inter',
+    'Shabnam',
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI Variable Text',
+    'Segoe UI',
+    Roboto,
+    'Helvetica Neue',
+    Arial,
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#__nuxt,
+#__layout {
+  min-height: 100vh;
+}
+
+/* ---------- shell ---------- */
+.page-dark {
+  min-height: 100vh;
+  background-color: #191d23;
+  padding: 32px 16px;
+}
+
+.container {
+  max-width: 1080px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* ---------- card ---------- */
+.test-card {
+  background: radial-gradient(
+    120% 104.06% at 50.07% -4%,
+    rgba(51, 78, 104, 0.15) 1.9%,
+    rgba(25, 29, 35, 0.95) 100%
+  );
+  border: 1px solid #7f9dbb;
+  -webkit-backdrop-filter: blur(12.5px);
+  backdrop-filter: blur(12.5px);
+  border-radius: 10px;
+  color: white;
+  padding: 24px;
+}
+
+.test-card h1 {
+  font-size: 28px;
+  font-weight: 700;
+  margin: 0 0 8px;
+}
+
+.test-card .subtitle {
+  margin: 0 0 16px;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.test-card h2 {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0 0 16px;
+}
+
+.section-icon {
+  display: inline-flex;
+  width: 22px;
+  height: 22px;
+  color: #00ffff;
+}
+
+.section-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.hint {
+  margin: 0 0 16px;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.hint code,
+.test-card code {
+  background: rgba(0, 255, 255, 0.1);
+  border: 1px solid rgba(0, 255, 255, 0.2);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 12px;
+  color: #00ffff;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+.result-box {
+  margin-top: 16px;
+  padding: 12px 16px;
+  background: rgba(0, 255, 255, 0.06);
+  border-left: 3px solid #00ffff;
+  border-radius: 4px;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.result-box code {
+  color: #00ffff;
+  font-weight: 600;
+}
+
+/* ---------- nav ---------- */
+.page-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.page-nav a {
+  color: #00ffff;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.page-nav a:hover {
+  text-decoration: underline;
+}
+
+.page-nav a.router-link-exact-active {
+  color: white;
+  font-weight: 600;
+}
+
+/* ---------- grid ---------- */
+.grid {
+  display: grid;
+  gap: 12px;
+}
+.grid.cols-2 { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+.grid.cols-3 { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
+.grid.cols-4 { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); }
+
+/* ---------- buttons ---------- */
+.btn {
+  padding: 12px 16px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  background: transparent;
+  color: white;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+  text-align: center;
+}
+
+.btn:focus-visible {
+  outline: 2px solid rgba(0, 255, 255, 0.6);
+  outline-offset: 2px;
+}
+
+.btn-success {
+  background: rgba(48, 224, 161, 0.1);
+  border-color: #30e0a1;
+  color: #30e0a1;
+}
+.btn-success:hover { background: rgba(48, 224, 161, 0.2); }
+
+.btn-warning {
+  background: rgba(255, 215, 0, 0.1);
+  border-color: #ffd700;
+  color: #ffd700;
+}
+.btn-warning:hover { background: rgba(255, 215, 0, 0.2); }
+
+.btn-error {
+  background: rgba(220, 20, 60, 0.1);
+  border-color: #dc143c;
+  color: #dc143c;
+}
+.btn-error:hover { background: rgba(220, 20, 60, 0.2); }
+
+.btn-info {
+  background: rgba(0, 255, 255, 0.1);
+  border-color: #00ffff;
+  color: #00ffff;
+}
+.btn-info:hover { background: rgba(0, 255, 255, 0.2); }
+
+.btn-outline {
+  border-color: rgba(255, 255, 255, 0.3);
+}
+.btn-outline:hover {
+  border-color: #00ffff;
+  background: rgba(0, 255, 255, 0.06);
+}
+
+.btn-tonal {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+.btn-tonal:hover { background: rgba(255, 255, 255, 0.14); }
