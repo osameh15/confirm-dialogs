@@ -5,6 +5,8 @@
 
 A beautiful, zero-dependency confirm dialog module for **Nuxt 3 and Nuxt 4** — no Vuetify or icon-font required. Drop it in, call `useConfirmDialog().confirmDelete(...)`, await the result.
 
+![Confirm Deletion dialog: red border, trash icon in a half-arc circle, "This action cannot be undone" warning, Cancel + Delete buttons](https://raw.githubusercontent.com/osameh15/confirm-dialogs/main/docs/images/error.png)
+
 - 🎨 **Polished look** — dark radial gradient, colored borders per type, decorative top icon, blurred backdrop
 - 🧩 **Standalone** — no Vuetify, no MDI, no extra CSS framework
 - ⚡️ **Auto-mounted** — no boilerplate, just call `useConfirmDialog().confirmDelete('item')`
@@ -31,6 +33,8 @@ A beautiful, zero-dependency confirm dialog module for **Nuxt 3 and Nuxt 4** —
 - [TypeScript](#typescript)
 - [Development](#development)
 - [License](#license)
+
+For deeper technical reference (architecture, design rationale, contributing), see [`docs/`](./docs/README.md).
 
 ---
 
@@ -87,6 +91,10 @@ const onSave = async () => {
   <button @click="onSave">Save</button>
 </template>
 ```
+
+The bundled playground exercises every feature — convenience methods, custom `show()`, custom buttons, and Persian RTL:
+
+![Quick demo page with the four convenience-method buttons and the custom show() controls](https://raw.githubusercontent.com/osameh15/confirm-dialogs/main/docs/images/QuickDemo.png)
 
 ---
 
@@ -192,6 +200,8 @@ await dialog.show({
 // resolves with 'cancel' | 'discard' | 'save'
 ```
 
+![Three-button dialog showing Cancel, Don't save, and Save laid out in a CSS grid](https://raw.githubusercontent.com/osameh15/confirm-dialogs/main/docs/images/3%20Buttons.png)
+
 | Field     | Type                                                          | Default                                |
 | --------- | ------------------------------------------------------------- | -------------------------------------- |
 | `text`    | `string`                                                      | required                               |
@@ -243,6 +253,25 @@ Props mirror `show(options)` plus `modelValue` (boolean) for `v-model`. Emits: `
 
 Each type has a matching inline SVG icon (no icon-font required).
 
+<table>
+  <tr>
+    <td align="center"><strong>success</strong></td>
+    <td align="center"><strong>warning</strong></td>
+  </tr>
+  <tr>
+    <td><img src="https://raw.githubusercontent.com/osameh15/confirm-dialogs/main/docs/images/success.png" alt="Success dialog — green border, checkmark icon, All set / Continue" /></td>
+    <td><img src="https://raw.githubusercontent.com/osameh15/confirm-dialogs/main/docs/images/Warning.png" alt="Warning dialog — yellow border, alert-triangle icon, Apply changes / Confirm" /></td>
+  </tr>
+  <tr>
+    <td align="center"><strong>error</strong></td>
+    <td align="center"><strong>info</strong></td>
+  </tr>
+  <tr>
+    <td><img src="https://raw.githubusercontent.com/osameh15/confirm-dialogs/main/docs/images/error.png" alt="Error dialog — red border, trash icon, Confirm Deletion / Delete" /></td>
+    <td><img src="https://raw.githubusercontent.com/osameh15/confirm-dialogs/main/docs/images/info.png" alt="Info dialog — cyan border, info icon, Cookie usage / OK" /></td>
+  </tr>
+</table>
+
 ---
 
 ## Customization
@@ -288,6 +317,8 @@ font-family:
 ### Right-to-left support
 
 When the title, message, or warning text contains Arabic / Persian script, the dialog auto-switches to `dir="rtl"`. The detection is per-instance — you can mix LTR and RTL dialogs in the same app without configuration.
+
+![Persian delete confirmation: red border, trash icon, "حذف فایل" title, RTL button order with حذف on the left and انصراف on the right, rendered with the bundled Shabnam font](https://raw.githubusercontent.com/osameh15/confirm-dialogs/main/docs/images/RTL.png)
 
 ### Manual mounting
 
