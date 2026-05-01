@@ -1,0 +1,65 @@
+/*
+ * Theme variables for nuxt-confirm-dialog.
+ *
+ * Default values target the dark theme (matches the original look).
+ * Light theme overrides are applied when an ancestor (or the dialog
+ * overlay itself) carries `data-theme="light"`.
+ *
+ * The four type-color borders (#30e0a1 / #ffd700 / #dc143c / #00ffff)
+ * stay constant across themes — they are part of the brand identity.
+ */
+
+:root,
+[data-theme='dark'] {
+  --confirm-overlay-bg: rgba(15, 18, 24, 0.78);
+  --confirm-card-bg: radial-gradient(
+    120% 104.06% at 50.07% -4%,
+    rgba(51, 78, 104, 0.98) 1.9%,
+    rgba(25, 29, 35, 0.98) 100%
+  );
+  --confirm-card-shadow: 0 12px 48px rgba(0, 0, 0, 0.55);
+  --confirm-icon-circle-bg: radial-gradient(
+    120% 104.06% at 50.07% -4%,
+    rgba(51, 78, 104, 0.98) 1.9%,
+    rgba(25, 29, 35, 0.98) 100%
+  );
+  --confirm-title-color: white;
+  --confirm-message-color: rgba(255, 255, 255, 0.85);
+  --confirm-warning-color: #ffd700;
+  --confirm-btn-outline-color: rgba(255, 255, 255, 0.9);
+  --confirm-btn-outline-border: rgba(255, 255, 255, 0.3);
+  --confirm-btn-outline-hover-bg: rgba(255, 255, 255, 0.08);
+  --confirm-btn-outline-hover-border: rgba(255, 255, 255, 0.5);
+  --confirm-btn-default-bg: rgba(255, 255, 255, 0.12);
+  --confirm-btn-default-color: white;
+  --confirm-btn-default-hover-bg: rgba(255, 255, 255, 0.2);
+  --confirm-focus-outline: rgba(0, 255, 255, 0.6);
+}
+
+[data-theme='light'] {
+  --confirm-overlay-bg: rgba(15, 18, 24, 0.55);
+  --confirm-card-bg: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.98) 0%,
+    rgba(248, 250, 252, 0.98) 100%
+  );
+  --confirm-card-shadow:
+    0 12px 48px rgba(15, 23, 42, 0.18),
+    0 0 0 1px rgba(15, 23, 42, 0.04);
+  --confirm-icon-circle-bg: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.98) 0%,
+    rgba(241, 245, 249, 0.98) 100%
+  );
+  --confirm-title-color: rgb(15, 23, 42);
+  --confirm-message-color: rgba(15, 23, 42, 0.7);
+  --confirm-warning-color: rgb(120, 53, 15);
+  --confirm-btn-outline-color: rgba(15, 23, 42, 0.78);
+  --confirm-btn-outline-border: rgba(15, 23, 42, 0.18);
+  --confirm-btn-outline-hover-bg: rgba(15, 23, 42, 0.06);
+  --confirm-btn-outline-hover-border: rgba(15, 23, 42, 0.32);
+  --confirm-btn-default-bg: rgba(15, 23, 42, 0.06);
+  --confirm-btn-default-color: rgb(15, 23, 42);
+  --confirm-btn-default-hover-bg: rgba(15, 23, 42, 0.12);
+  --confirm-focus-outline: rgba(8, 102, 121, 0.45);
+}

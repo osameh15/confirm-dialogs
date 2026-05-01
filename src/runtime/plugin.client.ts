@@ -1,12 +1,16 @@
 import { createApp, h } from 'vue'
 import { defineNuxtPlugin, useRuntimeConfig } from '#app'
 import ConfirmDialogContainer from './components/ConfirmDialogContainer.vue'
+import { _setConfirmDialogTheme } from './composables/useConfirmDialog'
 
 export default defineNuxtPlugin(() => {
   const cfg = useRuntimeConfig().public.confirmDialog as {
     closeOnBackdropClick: boolean
     escapeToCancel: boolean
+    theme: 'dark' | 'light'
   }
+
+  _setConfirmDialogTheme(cfg.theme)
 
   const root = document.createElement('div')
   root.id = 'nuxt-confirm-dialog-root'

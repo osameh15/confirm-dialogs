@@ -1,6 +1,8 @@
-import { ref } from 'vue'
+import { ref, readonly } from 'vue'
 
 export type ConfirmDialogType = 'success' | 'warning' | 'error' | 'info'
+
+export type ConfirmDialogTheme = 'dark' | 'light'
 
 export interface ConfirmDialogButton {
   /** Visible text on the button. */
@@ -43,6 +45,16 @@ export interface ConfirmDialogInstance extends Required<Omit<ConfirmDialogOption
 
 const currentDialog = ref<ConfirmDialogInstance | null>(null)
 let resolveAction: ((action: string) => void) | null = null
+
+const theme = ref<ConfirmDialogTheme>('dark')
+
+/** Switch the global theme. Reactive — every container re-renders. */
+const setTheme = (next: ConfirmDialogTheme): void => {
+  theme.value = next
+}
+
+/** Internal: invoked by the auto-mount plugin to seed the theme from module options. */
+export const _setConfirmDialogTheme = setTheme
 
 export const useConfirmDialog = () => {
   const show = (options: ConfirmDialogOptions): Promise<string> => {
@@ -146,5 +158,9 @@ export const useConfirmDialog = () => {
     confirmInfo,
     /** `Promise<boolean>` — resolves `true` if confirmed. Themed as success (green). */
     confirmSuccess,
+    /** Reactive global theme — `'dark'` or `'light'`. Read-only. */
+    theme: readonly(theme),
+    /** Switch theme at runtime. All containers reactively pick up the change. */
+    setTheme,
   }
 }

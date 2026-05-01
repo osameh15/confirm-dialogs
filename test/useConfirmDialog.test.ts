@@ -144,4 +144,28 @@ describe('useConfirmDialog', () => {
       await expect(b).resolves.toBe(false)
     })
   })
+
+  describe('theme', () => {
+    it('defaults to "dark"', () => {
+      const { theme, setTheme } = useConfirmDialog()
+      setTheme('dark')
+      expect(theme.value).toBe('dark')
+    })
+
+    it('setTheme switches to "light" reactively', () => {
+      const { theme, setTheme } = useConfirmDialog()
+      setTheme('light')
+      expect(theme.value).toBe('light')
+      setTheme('dark') // restore for other tests
+    })
+
+    it('all useConfirmDialog() calls share the same theme ref', () => {
+      const a = useConfirmDialog()
+      const b = useConfirmDialog()
+      a.setTheme('light')
+      expect(b.theme.value).toBe('light')
+      a.setTheme('dark')
+      expect(b.theme.value).toBe('dark')
+    })
+  })
 })

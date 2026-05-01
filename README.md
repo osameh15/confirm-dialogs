@@ -29,6 +29,7 @@ A beautiful, zero-dependency confirm dialog module for **Nuxt 3 and Nuxt 4** —
 - [Custom buttons](#custom-buttons)
 - [Component API](#component-api)
 - [Types](#types)
+- [Theme](#theme)
 - [Customization](#customization)
 - [TypeScript](#typescript)
 - [Development](#development)
@@ -122,6 +123,7 @@ export default defineNuxtConfig({
 | `closeOnBackdropClick` | `boolean` | `false`     | If `true`, clicking the dim backdrop cancels the dialog. Default is persistent (clicks on the backdrop are ignored). |
 | `escapeToCancel`       | `boolean` | `true`      | If `true`, pressing the Escape key cancels the dialog. |
 | `prefix`               | `string`  | `'Confirm'` | Component name prefix. Default makes components `<ConfirmDialog>` and `<ConfirmDialogContainer>`. |
+| `theme`                | `'dark' \| 'light'` | `'dark'` | Initial visual theme. Switch at runtime with `useConfirmDialog().setTheme(...)` or override per-container with the `theme` prop. |
 | `loadShabnamFont`      | `boolean` | `true`      | Inject the bundled Persian "Shabnam" font (5 weights, woff2). `unicode-range` ensures the file is only downloaded when Arabic/Persian script appears. |
 | `loadInterFont`        | `boolean` | `true`      | Add Inter (Google Fonts) as the modern English UI typeface via a `<link>` in the head. |
 
@@ -271,6 +273,42 @@ Each type has a matching inline SVG icon (no icon-font required).
     <td><img src="https://raw.githubusercontent.com/osameh15/confirm-dialogs/main/docs/images/info.png" alt="Info dialog — cyan border, info icon, Cookie usage / OK" /></td>
   </tr>
 </table>
+
+---
+
+## Theme
+
+Ships with a **dark** theme (default) and a **light** theme. Switch globally at runtime, or override per-container.
+
+```ts
+// nuxt.config.ts — initial theme
+confirmDialog: { theme: 'light' }
+```
+
+```vue
+<script setup lang="ts">
+const dialog = useConfirmDialog()
+
+console.log(dialog.theme.value) // 'dark' or 'light'
+
+dialog.setTheme('light')
+
+// Optional: follow the user's system preference
+const sync = () => dialog.setTheme(
+  window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light',
+)
+sync()
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', sync)
+</script>
+```
+
+Per-container override (useful for an always-light dialog inside a dark dashboard):
+
+```vue
+<ConfirmDialogContainer theme="light" />
+```
+
+The `theme` prop, when set, takes precedence over `useConfirmDialog().theme`. The four type-color borders (`#30e0a1` / `#FFD700` / `#DC143C` / `#00FFFF`) stay constant in both themes — only the card background, overlay backdrop, message text, and outlined button neutrals swap.
 
 ---
 

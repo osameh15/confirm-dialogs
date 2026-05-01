@@ -10,6 +10,11 @@ export interface ModuleOptions {
   /** Component name prefix. Defaults to `Confirm` (so components are `<ConfirmDialog>` and `<ConfirmDialogContainer>`). */
   prefix?: string
   /**
+   * Initial visual theme. Can be changed at runtime via
+   * `useConfirmDialog().setTheme(...)`. Defaults to `'dark'`.
+   */
+  theme?: 'dark' | 'light'
+  /**
    * If true, a `<ConfirmDialogContainer>` is mounted automatically on the
    * client and you only need to call `useConfirmDialog()`. If false, mount
    * `<ConfirmDialogContainer />` yourself somewhere in your app
@@ -45,6 +50,7 @@ declare module '@nuxt/schema' {
     confirmDialog: {
       closeOnBackdropClick: boolean
       escapeToCancel: boolean
+      theme: 'dark' | 'light'
     }
   }
 }
@@ -62,6 +68,7 @@ export default defineNuxtModule<ModuleOptions>({
     autoMount: true,
     closeOnBackdropClick: false,
     escapeToCancel: true,
+    theme: 'dark',
     loadShabnamFont: true,
     loadInterFont: true,
   },
@@ -71,7 +78,12 @@ export default defineNuxtModule<ModuleOptions>({
     nuxt.options.runtimeConfig.public.confirmDialog = {
       closeOnBackdropClick: options.closeOnBackdropClick!,
       escapeToCancel: options.escapeToCancel!,
+      theme: options.theme!,
     }
+
+    // Theme variables — must always load so var(--confirm-*) resolves.
+    nuxt.options.css = nuxt.options.css || []
+    nuxt.options.css.push(resolver.resolve('./runtime/assets/styles/confirm-dialog-theme.css'))
 
     addComponent({
       name: `${options.prefix}Dialog`,
@@ -88,7 +100,6 @@ export default defineNuxtModule<ModuleOptions>({
     })
 
     if (options.loadShabnamFont) {
-      nuxt.options.css = nuxt.options.css || []
       nuxt.options.css.push(resolver.resolve('./runtime/assets/styles/confirm-dialog-fonts.css'))
     }
 

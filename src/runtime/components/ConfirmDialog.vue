@@ -3,6 +3,7 @@
     <div
       v-if="isVisible"
       class="dialog-overlay"
+      :data-theme="theme"
       role="presentation"
       @mousedown.self="onBackdropClick"
     >
@@ -91,6 +92,8 @@ const props = withDefaults(
     buttons?: DialogButton[] | null
     closeOnBackdropClick?: boolean
     escapeToCancel?: boolean
+    /** Visual theme — `'dark'` (default) or `'light'`. */
+    theme?: 'dark' | 'light'
   }>(),
   {
     modelValue: false,
@@ -99,6 +102,7 @@ const props = withDefaults(
     confirmText: 'Confirm',
     cancelText: 'Cancel',
     buttons: null,
+    theme: 'dark',
     closeOnBackdropClick: false,
     escapeToCancel: true,
   },
@@ -302,7 +306,7 @@ defineExpose({
   align-items: center;
   justify-content: center;
   padding: 16px;
-  background: rgba(15, 18, 24, 0.78);
+  background: var(--confirm-overlay-bg);
   -webkit-backdrop-filter: blur(4px);
   backdrop-filter: blur(4px);
 }
@@ -314,16 +318,12 @@ defineExpose({
   max-width: 480px;
   margin-top: 32px;
   padding: 60px 32px 32px;
-  background: radial-gradient(
-    120% 104.06% at 50.07% -4%,
-    rgba(51, 78, 104, 0.98) 1.9%,
-    rgba(25, 29, 35, 0.98) 100%
-  );
+  background: var(--confirm-card-bg);
   -webkit-backdrop-filter: blur(12.5px);
   backdrop-filter: blur(12.5px);
   border-radius: 12px;
-  color: white;
-  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.55);
+  color: var(--confirm-title-color);
+  box-shadow: var(--confirm-card-shadow);
   font-family:
     'Inter',
     'Shabnam',
@@ -361,11 +361,7 @@ defineExpose({
   display: flex;
   align-items: center;
   justify-content: center;
-  background: radial-gradient(
-    120% 104.06% at 50.07% -4%,
-    rgba(51, 78, 104, 0.98) 1.9%,
-    rgba(25, 29, 35, 0.98) 100%
-  );
+  background: var(--confirm-icon-circle-bg);
   -webkit-backdrop-filter: blur(12.5px);
   backdrop-filter: blur(12.5px);
   z-index: 10;
@@ -400,7 +396,7 @@ defineExpose({
   font-size: 20px;
   font-weight: 600;
   margin: 0 0 16px;
-  color: white;
+  color: var(--confirm-title-color);
   text-align: center;
   font-family: inherit;
   line-height: 1.3;
@@ -410,7 +406,7 @@ defineExpose({
   font-size: 15px;
   line-height: 1.6;
   margin: 0;
-  color: rgba(255, 255, 255, 0.85);
+  color: var(--confirm-message-color);
   text-align: center;
   font-family: inherit;
 }
@@ -420,7 +416,7 @@ defineExpose({
   font-weight: 500;
   line-height: 1.5;
   margin: 12px 0 0;
-  color: #ffd700;
+  color: var(--confirm-warning-color);
   text-align: center;
   font-family: inherit;
 }
@@ -446,23 +442,23 @@ defineExpose({
   cursor: pointer;
   transition: all 0.15s ease;
   font-family: inherit;
-  color: white;
+  color: var(--confirm-title-color);
 }
 
 .dialog-btn:focus-visible {
-  outline: 2px solid rgba(0, 255, 255, 0.6);
+  outline: 2px solid var(--confirm-focus-outline);
   outline-offset: 2px;
 }
 
 .dialog-btn-outlined {
   background: transparent;
-  border-color: rgba(255, 255, 255, 0.3);
-  color: rgba(255, 255, 255, 0.9);
+  border-color: var(--confirm-btn-outline-border);
+  color: var(--confirm-btn-outline-color);
   font-weight: 500;
 }
 .dialog-btn-outlined:hover {
-  background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(255, 255, 255, 0.5);
+  background: var(--confirm-btn-outline-hover-bg);
+  border-color: var(--confirm-btn-outline-hover-border);
 }
 
 .dialog-btn-flat {
@@ -482,8 +478,8 @@ defineExpose({
 .dialog-btn-info:hover { background: #00e6e6; }
 
 .dialog-btn-default {
-  background: rgba(255, 255, 255, 0.12);
-  color: white;
+  background: var(--confirm-btn-default-bg);
+  color: var(--confirm-btn-default-color);
 }
-.dialog-btn-default:hover { background: rgba(255, 255, 255, 0.2); }
+.dialog-btn-default:hover { background: var(--confirm-btn-default-hover-bg); }
 </style>
